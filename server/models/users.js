@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const validator = require('validator');
 const Schema = mongoose.Schema;
 
 const User = new Schema({
@@ -11,17 +10,10 @@ const User = new Schema({
   },
   photos: [
     {
-      url: {
-        type: String,
+      photoId: {
+        type: Schema.Types.ObjectId,
         required: true,
-        validate: {
-          validator: validator.isURL
-        }
       },
-      desc: {
-        type: String,
-        required: true,
-      }
     }
   ]
 });
