@@ -9,20 +9,16 @@ const userTwoID = new ObjectID();
 const users = [
   {
     _id: userOneID,
-    github: {
+    twitter: {
       id: '123',
       displayName: 'John Doe',
-      username: 'jdoe',
-      publicRepos: 1,
     },
   },
   {
     _id: userTwoID,
-    githubt: {
+    twitter: {
       id: '321',
       displayName: 'Jane Doe',
-      username: 'janeBetterThanJohn',
-      publicRepos: 100,
     },
   },
 ];

@@ -1,34 +1,28 @@
 'use strict';
 
-const GitHubStrategy = require('passport-github').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 const User = require('../models/users');
 const configAuth = require('./auth');
 
-const registerGithubUser = function(token, refreshToken, profile, done) {
+const registerTwitterUser = function(token, refreshToken, profile, done) {
   process
     .nextTick(function() {
       User
         .findOne({
-          'github.id': profile.id,
+          'twitter.id': profile.id
         }, function(err, user) {
-					/*istanbul ignore next: not sure how to generate error for test*/
           if (err) {
             return done(err);
           }
 
-					/*istanbul ignore next*/
           if (user) {
             return done(null, user);
           } else {
-            let newUser = new User();
-
-            newUser.github.id = profile.id;
-            newUser.github.username = profile.username;
-            newUser.github.displayName = profile.displayName;
-            newUser.github.publicRepos = profile._json.public_repos;
+            const newUser = new User();
+            newUser.twitter.id = profile.id;
+            newUser.twitter.displayName = profile.screen_name;
 
             newUser.save(function(err) {
-							/*istanbul ignore next: hard to trigger for tests*/
               if (err) {
                 throw err;
               }
@@ -39,13 +33,9 @@ const registerGithubUser = function(token, refreshToken, profile, done) {
         });
     });
 };
-exports.registerGithubUser = registerGithubUser;
 
-/**
- * export - passport initialization
- *
- * @param  {module} passport main passport module
- */
+exports.registerTwitterUser = registerTwitterUser;
+
 exports.default = function(passport) {
   passport
     .serializeUser(function(user, done) {
@@ -59,9 +49,9 @@ exports.default = function(passport) {
       });
   });
 
-  passport.use(new GitHubStrategy({
-    clientID: configAuth.githubAuth.clientID,
-    clientSecret: configAuth.githubAuth.clientSecret,
-    callbackURL: configAuth.githubAuth.callbackURL,
-  }, registerGithubUser));
+  passport.use(new TwitterStrategy({
+    consumerKey: configAuth.twitterAuth.consumerKey,
+    consumerSecret: configAuth.twitterAuth.consumerSecret,
+    callbackURL: configAuth.twitterAuth.callbackURL
+  }, registerTwitterUser));
 };
