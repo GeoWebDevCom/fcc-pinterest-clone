@@ -5,8 +5,14 @@ const Schema = mongoose.Schema;
 
 const User = new Schema({
   twitter: {
-    id: String,
-    displayName: String
+    id: {
+      type: String,
+      required: true,
+    },
+    displayName: {
+      type: String,
+      required: true,
+    },
   },
   photos: [
     {

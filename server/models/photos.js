@@ -9,7 +9,8 @@ const Photo = new Schema({
     type: String,
     required: true,
     validate: {
-      validator: validator.isURL
+      validator: validator.isURL,
+      isAsync: false,
     }
   },
   desc: {
