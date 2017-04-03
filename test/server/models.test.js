@@ -33,9 +33,7 @@ describe('users model', () => {
     user
       .save()
       .then((res) => {
-        console.log('Expected user to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected user to not be accepted'));
       })
       .catch((error) => {
         expect(error).toExist();
@@ -52,9 +50,7 @@ describe('users model', () => {
     user
       .save()
       .then((res) => {
-        console.log('Expected user to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected user to not be accepted'));
       })
       .catch((error) => {
         expect(error).toExist();
@@ -72,9 +68,7 @@ describe('users model', () => {
     user
       .save()
       .then((res) => {
-        console.log('Expected user to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected user to not be accepted'));
       })
       .catch((error) => {
         expect(error).toExist();
@@ -101,9 +95,7 @@ describe('photos model', () => {
     photo
       .save()
       .then((res) => {
-        console.log('Expected photo to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected photo to not be accepted'));
       })
       .catch((err) => {
         expect(err).toExist();
@@ -117,9 +109,7 @@ describe('photos model', () => {
     photo
       .save()
       .then((res) => {
-        console.log('Expected photo to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected photo to not be accepted'));
       })
       .catch((err) => {
         expect(err).toExist();
@@ -132,9 +122,7 @@ describe('photos model', () => {
     photo
       .save()
       .then((res) => {
-        console.log('Expected photo to not be accepted');
-        expect(true).toNotBe(true);
-        done();
+        done(new Error('Expected photo to not be accepted'));
       })
       .catch((err) => {
         expect(err).toExist();
