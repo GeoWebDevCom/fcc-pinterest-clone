@@ -128,7 +128,7 @@ describe('photos model', () => {
   });
 
   it('should reject photo entries without a creator', (done) => {
-    let photo = new PhotoModel({url: 'http://tjscollinsme', desc: 'My Home page'});
+    let photo = new PhotoModel({url: 'http://tjscollins.me', desc: 'My Home page'});
     photo
       .save()
       .then((res) => {

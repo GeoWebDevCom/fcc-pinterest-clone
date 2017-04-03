@@ -19,6 +19,7 @@ const Photo = new Schema({
   },
   creator: {
     type: Schema.Types.ObjectId,
+    required: true,
   },
   likes: [Schema.Types.ObjectId],
 });
