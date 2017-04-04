@@ -35,6 +35,16 @@ describe('redux tests', () => {
 
       expect(actions.setAllPhotos(photos)).toEqual(action);
     });
+
+    it('should generate the ADD_PHOTO actions', ()=>{
+      const photo = 'photo';
+      const action = {
+        type: 'ADD_PHOTO',
+        photo: 'photo',
+      };
+
+      expect(actions.addPhoto(photo)).toEqual(action);
+    });
   });
 
   describe('reducer tests', () => {

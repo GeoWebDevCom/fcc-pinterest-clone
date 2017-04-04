@@ -15,3 +15,10 @@ export const setAllPhotos = (photos) => {
     photos,
   };
 };
+
+export const addPhoto = (photo) => {
+  return {
+    type: 'ADD_PHOTO',
+    photo,
+  };
+};
