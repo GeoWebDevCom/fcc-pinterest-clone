@@ -21,28 +21,20 @@ module.exports = function(app, passport) {
     .route('/')
     .get(sendIndex);
 
-  // app
-  //   .route('/login')
-  //   .get(sendIndex);
+  // app   .route('/login')   .get(sendIndex);
   //
-  // app
-  //   .route('/logout')
-  //   .get(function(req, res) {
-  //     req.logout();
-  //     res.redirect('/login');
-  //   });
+  // app   .route('/logout')   .get(function(req, res) {     req.logout();
+  // res.redirect('/login');   });
   //
-  // app
-  //   .route('/profile')
-  //   .get(isLoggedIn, sendIndex);
+  // app   .route('/profile')   .get(isLoggedIn, sendIndex);
   //
   app
     .route('/api/me')
     .get(isLoggedIn,
-      /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
-      function(req, res) {
-        res.json(req.user);
-      });
+    /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
+    function(req, res) {
+      res.json(req.user);
+    });
 
   app
     .route('/auth/twitter')
@@ -52,6 +44,6 @@ module.exports = function(app, passport) {
     .route('/auth/twitter/callback')
     .get(passport.authenticate('twitter', {
       successRedirect: '/',
-      failureRedirect: '/',
+      failureRedirect: '/'
     }));
 };
