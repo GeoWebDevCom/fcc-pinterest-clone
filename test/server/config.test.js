@@ -40,7 +40,7 @@ describe('Passport Configuration', () => {
     const {registerTwitterUser} = require('../../server/config/passport');
     let profile = {
       id: '234',
-      screen_name: 'Slartibartfast',
+      displayName: 'Slartibartfast',
     };
     registerTwitterUser(null, null, profile, (err, user)=> {
       User.findOne({'twitter.id': '234'}, (err, user) => {
@@ -58,7 +58,7 @@ describe('Passport Configuration', () => {
     const {registerTwitterUser} = require('../../server/config/passport');
     let profile = {
       id: '123',
-      screen_name: 'Slartibartfast',
+      displayName: 'Slartibartfast',
     };
     registerTwitterUser(null, null, profile, (err, user) =>{
       User.findOne({'twitter.id': '123'}, (err, user) => {
