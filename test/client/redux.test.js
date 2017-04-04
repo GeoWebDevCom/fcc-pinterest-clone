@@ -38,7 +38,7 @@ describe('redux tests', () => {
   });
 
   describe('reducer tests', () => {
-    it('should set user data in the redux store', () => {
+    it('should SET USER data in the redux store', () => {
       const state = {
         user: null,
       };
@@ -52,9 +52,9 @@ describe('redux tests', () => {
       expect(userSessionReducer(df(state), df(action))).toEqual(result);
     });
 
-    it('should set all photos in the redux store', () => {
+    it('should SET ALL PHOTOS in the redux store', () => {
       const state = {
-        list: null,
+        list: [],
       };
       const action = {
         type: 'SET_ALL_PHOTOS',
@@ -62,6 +62,20 @@ describe('redux tests', () => {
       };
       const result = {
         list: 'photos',
+      };
+      expect(photosReducer(df(state), df(action))).toEqual(result);
+    });
+
+    it('should ADD one PHOTO to the redux store', () => {
+      const state = {
+        list: [],
+      };
+      const action = {
+        type: 'ADD_PHOTO',
+        photo: 'photo',
+      };
+      const result = {
+        list: ['photo'],
       };
       expect(photosReducer(df(state), df(action))).toEqual(result);
     });

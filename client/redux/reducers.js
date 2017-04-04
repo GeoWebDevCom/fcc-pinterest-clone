@@ -17,6 +17,14 @@ export const photosReducer = (state = {}, action) => {
         ...state,
         list: action.photos,
       };
+    case 'ADD_PHOTO':
+      return {
+        ...state,
+        list: [
+          ...state.list,
+          action.photo,
+        ],
+      };
     default:
       return state;
   }
