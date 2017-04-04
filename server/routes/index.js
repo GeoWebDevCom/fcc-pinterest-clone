@@ -8,50 +8,50 @@ const sendIndex = (req, res) => {
 };
 
 module.exports = function(app, passport) {
-  function isLoggedIn(req, res, next) {
-    /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
-    if (req.isAuthenticated()) {
-      return next();
-    } else {
-      res.redirect('/login');
-    }
-  }
+  // function isLoggedIn(req, res, next) {
+  //   /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
+  //   if (req.isAuthenticated()) {
+  //     return next();
+  //   } else {
+  //     res.redirect('/login');
+  //   }
+  // }
 
   app
     .route('/')
-    .get(isLoggedIn, sendIndex);
-
-  app
-    .route('/login')
     .get(sendIndex);
 
-  app
-    .route('/logout')
-    .get(function(req, res) {
-      req.logout();
-      res.redirect('/login');
-    });
+  // app
+  //   .route('/login')
+  //   .get(sendIndex);
+  //
+  // app
+  //   .route('/logout')
+  //   .get(function(req, res) {
+  //     req.logout();
+  //     res.redirect('/login');
+  //   });
+  //
+  // app
+  //   .route('/profile')
+  //   .get(isLoggedIn, sendIndex);
+  //
+  // app
+  //   .route('/api/me')
+  //   .get(isLoggedIn,
+  //     /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
+  //     function(req, res) {
+  //       res.json(req.user.github);
+  //     });
 
   app
-    .route('/profile')
-    .get(isLoggedIn, sendIndex);
+    .route('/auth/twitter')
+    .get(passport.authenticate('twitter'));
 
   app
-    .route('/api/me')
-    .get(isLoggedIn,
-      /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
-      function(req, res) {
-        res.json(req.user.github);
-      });
-
-  app
-    .route('/auth/github')
-    .get(passport.authenticate('github'));
-
-  app
-    .route('/auth/github/callback')
-    .get(passport.authenticate('github', {
+    .route('/auth/twitter/callback')
+    .get(passport.authenticate('twitter', {
       successRedirect: '/',
-      failureRedirect: '/login',
+      failureRedirect: '/',
     }));
 };
