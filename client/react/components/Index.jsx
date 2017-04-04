@@ -2,7 +2,7 @@
 import React from 'react';
 
 /*----------Components----------*/
-
+import Header from 'Header';
 
 export class Index extends React.Component {
   constructor() {
@@ -11,6 +11,7 @@ export class Index extends React.Component {
   render() {
     return (
       <div>
+        <Header />
         <div className='container'>
           <img src='/public/img/clementine_150.png' />
           <br />

@@ -3,7 +3,7 @@ import thunk from 'redux-thunk';
 import {userSessionReducer, photosReducer} from 'reducers';
 
 const configureStore = (initialState = {}) => {
-  let combinedReducer = reducer || redux.combineReducers({
+  let combinedReducer = redux.combineReducers({
     userSession: userSessionReducer,
     photos: photosReducer,
   });

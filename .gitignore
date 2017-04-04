@@ -3,3 +3,4 @@ node_modules/
 .eslintrc
 .env
 yarn.lock
+yarn-error.log
