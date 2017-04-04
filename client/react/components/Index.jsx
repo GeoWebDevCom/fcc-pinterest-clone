@@ -5,6 +5,7 @@ import $ from 'jquery';
 
 /*----------Components----------*/
 import Header from 'Header';
+import PhotoContainer from 'PhotoContainer';
 
 /*----------Redux----------*/
 import * as actions from 'actions';
@@ -18,8 +19,8 @@ export class Index extends React.Component {
     $
       .get('/api/me')
       .done((user) => {
-        console.log(user);
-        if (user) {
+        // console.log(user);
+        if (user.twitter) {
           dispatch(actions.setUser(user));
         }
       })
@@ -29,9 +30,7 @@ export class Index extends React.Component {
     return (
       <div>
         <Header />
-        <div className='container'>
-          <h1>Pics</h1>
-        </div>
+        <PhotoContainer />
       </div>
     );
   }

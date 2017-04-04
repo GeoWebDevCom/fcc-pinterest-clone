@@ -1,15 +1,19 @@
 /*----------Modules----------*/
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
 /*----------Components----------*/
-
 
 export class Header extends React.Component {
   constructor() {
     super();
   }
+  addPic(e) {
+    e.preventDefault();
+  }
   render() {
+    const {_id} = this.props.userSession.user;
     return (
       <nav className='navbar navbar-default'>
         <div className='container'>
@@ -46,10 +50,33 @@ export class Header extends React.Component {
                   My Pics
                 </Link>
               </li>
+              <li className='dropdown'>
+                <a
+                  href='#'
+                  className='dropdown-toggle'
+                  data-toggle='dropdown'
+                  role='button'
+                  aria-haspopup='true'
+                  aria-expanded='false'>Add Pic
+                  <span className='caret' /></a>
+                <ul className='dropdown-menu'>
+                  <form onSubmit={this.addPic} className='dropdown-form'>
+                    <input className='form-control' ref='picURL' type='text' placeholder='Url' />
+                    <input className='form-control' ref='desc' type='text' placeholder='Description' />
+                    <button className='btn btn-primary form-control' type='submit'>
+                      Add Pic
+                    </button>
+                  </form>
+                </ul>
+              </li>
             </ul>
             <ul className='nav navbar-nav navbar-right'>
               <li>
-                <a href='/auth/twitter'><i className='fa fa-twitter blue' /> Login</a>
+                <a href='/auth/twitter'><i className='fa fa-twitter blue' />
+                  {_id
+                    ? 'Logout'
+                    : 'Login'}
+                </a>
               </li>
             </ul>
             {/* {this.navbarRight(userSession)} */}
@@ -60,4 +87,8 @@ export class Header extends React.Component {
   }
 }
 
-export default Header;
+Header.propTypes = {
+  userSession: PropTypes.object
+};
+
+export default connect((state) => state)(Header);

@@ -1,5 +1,5 @@
 /*----------Modules----------*/
-import React from 'react';
+import React, {PropTypes} from 'react';
 
 /*----------Components----------*/
 
@@ -18,7 +18,7 @@ export class RouteContainer extends React.Component {
 }
 
 RouteContainer.propTypes = {
-  children: React.PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default RouteContainer;
