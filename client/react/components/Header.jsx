@@ -47,6 +47,11 @@ export class Header extends React.Component {
                 </Link>
               </li>
             </ul>
+            <ul className='nav navbar-nav navbar-right'>
+              <li>
+                <a href='/auth/twitter'><i className='fa fa-twitter blue' /> Login</a>
+              </li>
+            </ul>
             {/* {this.navbarRight(userSession)} */}
           </div>
         </div>

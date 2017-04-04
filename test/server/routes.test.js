@@ -69,19 +69,19 @@ describe('Server Routes', () => {
   //   });
   // });
   //
-  // describe('/api/me', () => {
-  //   describe('GET', () => {
-  //     it('should redirect an unauthenticated user', (done) => {
-  //       request(app)
-  //         .get('/api/me')
-  //         .send()
-  //         .expect(302)
-  //         .end((err, res) => {
-  //           if (err)
-  //             return done(err);
-  //           done();
-  //         });
-  //     });
-  //   });
-  // });
+  describe('/api/me', () => {
+    describe('GET', () => {
+      it('should redirect an unauthenticated user', (done) => {
+        request(app)
+          .get('/api/me')
+          .send()
+          .expect(302)
+          .end((err, res) => {
+            if (err)
+              return done(err);
+            done();
+          });
+      });
+    });
+  });
 });

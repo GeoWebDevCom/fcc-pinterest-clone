@@ -8,14 +8,14 @@ const sendIndex = (req, res) => {
 };
 
 module.exports = function(app, passport) {
-  // function isLoggedIn(req, res, next) {
-  //   /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
-  //   if (req.isAuthenticated()) {
-  //     return next();
-  //   } else {
-  //     res.redirect('/login');
-  //   }
-  // }
+  function isLoggedIn(req, res, next) {
+    /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
+    if (req.isAuthenticated()) {
+      return next();
+    } else {
+      res.redirect('/');
+    }
+  }
 
   app
     .route('/')
@@ -36,13 +36,13 @@ module.exports = function(app, passport) {
   //   .route('/profile')
   //   .get(isLoggedIn, sendIndex);
   //
-  // app
-  //   .route('/api/me')
-  //   .get(isLoggedIn,
-  //     /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
-  //     function(req, res) {
-  //       res.json(req.user.github);
-  //     });
+  app
+    .route('/api/me')
+    .get(isLoggedIn,
+      /*istanbul ignore next: not sure how to fake req.isAuthenticated() for tests*/
+      function(req, res) {
+        res.json(req.user);
+      });
 
   app
     .route('/auth/twitter')

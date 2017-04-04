@@ -20,7 +20,7 @@ const registerTwitterUser = function(token, refreshToken, profile, done) {
           } else {
             const newUser = new User();
             newUser.twitter.id = profile.id;
-            newUser.twitter.displayName = profile.screen_name;
+            newUser.twitter.displayName = profile.displayName;
 
             newUser.save(function(err) {
               if (err) {
