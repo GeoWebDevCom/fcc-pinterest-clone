@@ -6,3 +6,12 @@ export const setUser = (user) => {
     user,
   };
 };
+
+// photos actions
+
+export const setAllPhotos = (photos) => {
+  return {
+    type: 'SET_ALL_PHOTOS',
+    photos,
+  };
+};
