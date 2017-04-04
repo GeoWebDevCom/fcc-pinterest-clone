@@ -14,11 +14,11 @@ beforeEach((done) => {
 });
 
 describe('Passport Configuration', () => {
-  // it('should register a GITHUB STRATEGY', () => {
-  //   let {github} = passport._strategies;
-  //   expect(github).toExist();
-  //   expect(github.name).toBe('github');
-  // });
+  it('should register a TWITTER STRATEGY', () => {
+    let {twitter} = passport._strategies;
+    expect(twitter).toExist();
+    expect(twitter.name).toBe('twitter');
+  });
 
   it('should register serializeUser', () => {
     let [serializeUser] = passport._serializers;
