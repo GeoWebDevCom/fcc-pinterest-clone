@@ -16,7 +16,7 @@ export class Profile extends Component {
       <div>
         <div>
           <Header />
-          <PhotoContainer />
+          <PhotoContainer user />
         </div>
       </div>
   );

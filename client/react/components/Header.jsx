@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 
 /*----------Components----------*/
 
+/*----------Redux----------*/
+import * as actions from 'actions';
+
 export class Header extends React.Component {
   constructor() {
     super();
@@ -21,7 +24,9 @@ export class Header extends React.Component {
       .catch(console.error);
     $
       .get('/photos')
-      .done((photos) => {
+      .done((res) => {
+        let {photos} = res;
+        // console.log('GET /photos', photos);
         if (photos.length) {
           dispatch(actions.setAllPhotos(photos));
         }

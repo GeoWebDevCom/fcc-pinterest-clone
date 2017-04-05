@@ -13,6 +13,9 @@ const initialState = {
   userSession: {
     user: {},
   },
+  photos: {
+    list: [],
+  }
 };
 
 ReactDOM.render(
