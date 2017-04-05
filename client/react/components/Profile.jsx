@@ -1,32 +1,30 @@
 /*----------Modules----------*/
-import React from 'react';
+import React, {PropTypes, Component} from 'react';
+import {connect} from 'react-redux';
+import $ from 'jquery';
 
 /*----------Components----------*/
+import Header from 'Header';
+import PhotoContainer from 'PhotoContainer';
 
-
-/*eslint-disable require-jsdoc*/
-export class Profile extends React.Component {
+export class Profile extends Component {
   constructor() {
     super();
   }
   render() {
     return (
       <div>
-        <div className='container'>
-          <div className='github-profile'>
-            <img src='/public/img/gh-mark-32px.png' alt='github logo' />
-            <p><span>ID: </span><span id='profile-id' className='profile-value' /></p>
-            <p><span>Username: </span><span id='profile-username' className='profile-value' /></p>
-            <p><span>Display Name: </span><span id='display-name' className='profile-value' /></p>
-            <p><span>Repositories: </span><span id='profile-repos' className='profile-value' /></p>
-            <a className='menu' href='/'>Home</a>
-            <p id='menu-divide'>|</p>
-            <a className='menu' href='/logout'>Logout</a>
-          </div>
+        <div>
+          <Header />
+          <PhotoContainer />
         </div>
       </div>
   );
   }
 }
 
-export default Profile;
+Profile.propTypes = {
+  dispatch: PropTypes.func,
+};
+
+export default connect((state) => state)(Profile);

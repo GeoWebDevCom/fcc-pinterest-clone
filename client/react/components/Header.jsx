@@ -9,6 +9,24 @@ export class Header extends React.Component {
   constructor() {
     super();
   }
+  componentDidMount() {
+    const {dispatch} = this.props;
+    $
+      .get('/api/me')
+      .done((user) => {
+        if (user.twitter) {
+          dispatch(actions.setUser(user));
+        }
+      })
+      .catch(console.error);
+    $
+      .get('/photos')
+      .done((photos) => {
+        if (photos.length) {
+          dispatch(actions.setAllPhotos(photos));
+        }
+      });
+  }
   addPic(e) {
     e.preventDefault();
   }
@@ -62,7 +80,11 @@ export class Header extends React.Component {
                 <ul className='dropdown-menu'>
                   <form onSubmit={this.addPic} className='dropdown-form'>
                     <input className='form-control' ref='picURL' type='text' placeholder='Url' />
-                    <input className='form-control' ref='desc' type='text' placeholder='Description' />
+                    <input
+                      className='form-control'
+                      ref='desc'
+                      type='text'
+                      placeholder='Description' />
                     <button className='btn btn-primary form-control' type='submit'>
                       Add Pic
                     </button>
@@ -77,7 +99,7 @@ export class Header extends React.Component {
                     <i className='fa fa-twitter blue' />
                     {_id
                       ? 'Logout'
-                    : 'Login'}
+                      : 'Login'}
                   </button>
                 </a>
               </li>
@@ -91,7 +113,8 @@ export class Header extends React.Component {
 }
 
 Header.propTypes = {
-  userSession: PropTypes.object
+  userSession: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
 export default connect((state) => state)(Header);

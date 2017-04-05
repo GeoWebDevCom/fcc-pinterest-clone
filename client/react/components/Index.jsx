@@ -14,18 +14,6 @@ export class Index extends React.Component {
   constructor() {
     super();
   }
-  componentDidMount() {
-    const {dispatch} = this.props;
-    $
-      .get('/api/me')
-      .done((user) => {
-        // console.log(user);
-        if (user.twitter) {
-          dispatch(actions.setUser(user));
-        }
-      })
-      .catch(console.error);
-  }
   render() {
     return (
       <div>
