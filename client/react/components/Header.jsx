@@ -72,10 +72,13 @@ export class Header extends React.Component {
             </ul>
             <ul className='nav navbar-nav navbar-right'>
               <li>
-                <a href='/auth/twitter'><i className='fa fa-twitter blue' />
-                  {_id
-                    ? 'Logout'
+                <a href='/auth/twitter'>
+                  <button className='btn btn-default'>
+                    <i className='fa fa-twitter blue' />
+                    {_id
+                      ? 'Logout'
                     : 'Login'}
+                  </button>
                 </a>
               </li>
             </ul>
