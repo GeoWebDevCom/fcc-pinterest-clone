@@ -1,4 +1,4 @@
-/*global describe it beforeEach done*/
+/*global describe it*/
 const expect = require('expect');
 const request = require('supertest');
 
@@ -15,6 +15,27 @@ describe('Server Routes', () => {
           .end((err, res) => {
             if (err)
               return done(err);
+            done();
+          });
+      });
+    });
+  });
+
+  describe('/photos', () => {
+    describe('GET', () => {
+      it('should respond with a list of photos from the database', (done) => {
+          request(app)
+          .get('/photos')
+          .send()
+          .expect(200)
+          .end((err, res) => {
+            if(err)
+              return done(err);
+
+            let {photos} = res.body;
+            expect(photos).toExist();
+            expect(photos.length).toBe(4);
+            expect(photos[0].url).toExist();
             done();
           });
       });

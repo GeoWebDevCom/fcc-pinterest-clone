@@ -1,5 +1,6 @@
 'use strict';
 /*eslint-disable require-jsdoc*/
+const PhotoModel = require('../models/photos');
 
 const path = process.cwd();
 
@@ -20,6 +21,19 @@ module.exports = function(app, passport) {
   app
     .route('/')
     .get(sendIndex);
+
+  app
+    .route('/photos')
+    .get((req, res) => {
+      PhotoModel
+        .find({})
+        .then((photos) => {
+          res
+            .status(200)
+            .send({photos});
+        })
+        .catch(console.error);
+    });
 
   // app   .route('/login')   .get(sendIndex);
   //
