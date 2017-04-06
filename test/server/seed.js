@@ -27,22 +27,34 @@ const photos = [
   {
     url: 'http://weknowyourdreams.com/images/python/python-08.jpg',
     desc: 'A real python',
-    creator: userOneID,
+    creator: {
+      _id: userOneID,
+      displayName: 'John Done',
+    },
     likes: [userOneID, userTwoID, new ObjectID(), new ObjectID()]
   }, {
     url: 'http://www.petrozavodsk-mo.ru/images/upload/fofan.jpg',
     desc: 'A boat',
-    creator: userOneID,
+    creator: {
+      _id: userOneID,
+      displayName: 'John Done',
+    },
     likes: [userOneID, userTwoID, new ObjectID()]
   }, {
     url: 'https://s-media-cache-ak0.pinimg.com/originals/ea/05/e1/ea05e17424d521af3454fc862e623f67.jpg',
     desc: 'Tinian',
-    creator: userOneID,
+    creator: {
+      _id: userOneID,
+      displayName: 'John Done',
+    },
     likes: [userOneID, new ObjectID(), new ObjectID()]
   }, {
     url: 'http://www.mymarianas.com/resources/images/Tin030LR.JPG',
     desc: 'Taga\'s Beach',
-    creator: userTwoID,
+    creator: {
+      _id: userTwoID,
+      displayName: 'Jane Done',
+    },
     likes: [userTwoID]
   }
 ];
