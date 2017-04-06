@@ -12,13 +12,15 @@ const users = [
     _id: userOneID,
     twitter: {
       id: '123',
-      displayName: 'John Doe'
+      displayName: 'John Doe',
+      pic: ' ',
     }
   }, {
     _id: userTwoID,
     twitter: {
       id: '321',
-      displayName: 'Jane Doe'
+      displayName: 'Jane Doe',
+      pic: ' ',
     }
   }
 ];

@@ -13,6 +13,10 @@ const User = new Schema({
       type: String,
       required: true,
     },
+    pic: {
+      type: String,
+      required: true,
+    },
   },
   photos: [
     {

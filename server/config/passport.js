@@ -21,6 +21,8 @@ const registerTwitterUser = function(token, refreshToken, profile, done) {
             const newUser = new User();
             newUser.twitter.id = profile.id;
             newUser.twitter.displayName = profile.displayName;
+            newUser.twitter.pic = profile._json.profile_image_url;
+            // console.log(profile);
 
             newUser.save(function(err) {
               if (err) {
