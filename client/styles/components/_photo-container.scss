@@ -9,4 +9,38 @@
 .photo-column {
   padding: 0;
   border : 1px solid black;
+  background: $first-white;
+}
+
+.photo-desc {
+  margin-top: 5px;
+  border-radius: 2px;
+  background-color: $second-white;
+  color: pick-contrast($second-white);
+  text-align: center;
+}
+
+.photo-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5px;
+  border-radius: 2px;
+  background-color: $first-white;
+  color: pick-contrast($first-white);
+  text-align: center;
+  word-wrap: break-word;
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
+
+  button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 }

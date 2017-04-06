@@ -6,3 +6,20 @@ $tblt-port: 768px;
 $tblt-land: 992px;
 $desktop: 1200px;
 $big-desktop: 1800px;
+
+
+
+/**
+ * Color Palette using functions from _color-palette.scss
+ */
+ $first-color: hsl(220, 100%, 50%);
+ $second-color: complement($first-color);
+
+$first-harmonious: harmonious-mix($second-color, $first-color);
+$second-harmonious: harmonious-mix($first-color, $second-color);
+
+$first-neutral: mix-neutral($first-harmonious);
+$second-neutral: mix-neutral($second-harmonious);
+
+$first-white: lighten($first-neutral, 40);
+$second-white: lighten($second-neutral, 40);
