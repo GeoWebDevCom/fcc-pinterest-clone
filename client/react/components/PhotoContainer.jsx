@@ -43,7 +43,6 @@ export class PhotoContainer extends Component {
   }
   imgError(_id) {
     return () => {
-      console.log('IMG ERROR', _id);
       $(`#${_id}-img`).attr('src', 'http://combiboilersleeds.com/images/default/default-5.jpg');
     };
   }
@@ -54,7 +53,6 @@ export class PhotoContainer extends Component {
         user
       }} = this.props;
     return list.filter((photo) => {
-      // console.log(photo.creator._id, user._id);
       return myPics
         ? photo.creator._id == user._id
         : true;

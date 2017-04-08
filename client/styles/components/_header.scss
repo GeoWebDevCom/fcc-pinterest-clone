@@ -4,6 +4,7 @@ i.blue {
 
 .dropdown-form {
   padding: 5px;
+  height:auto;
 
   input {
     margin-bottom: 5px;
@@ -15,10 +16,10 @@ nav {
   // overflow-y: hidden;
 }
 
-nav button {
+nav button.login {
   position: absolute;
   margin: 7px;
   top: 0px;
   left: -50px;
-  padding: 0px;
+  // padding: 0px;
 }

@@ -119,7 +119,7 @@ export class Header extends Component {
             <ul className='nav navbar-nav navbar-right'>
               <li>
                 <a href='/auth/twitter'>
-                  <button className='btn btn-default'>
+                  <button className='btn btn-default login'>
                     <i className='fa fa-twitter blue' />
                     {_id
                       ? 'Logout'
