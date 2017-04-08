@@ -33,6 +33,7 @@ export class Header extends Component {
       });
   }
   addPic = (e) => {
+    const {dispatch} = this.props;
     e.preventDefault();
     let request = {
       url: '/photos',
@@ -48,7 +49,9 @@ export class Header extends Component {
     };
     $
       .ajax(request)
-      .done((res) => console.log)
+      .done((photo) => {
+        dispatch(actions.addPhoto(photo));
+      })
       .fail(console.error);
   }
   render() {

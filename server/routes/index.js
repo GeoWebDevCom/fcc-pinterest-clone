@@ -61,7 +61,6 @@ module.exports = function(app, passport) {
           photo
             .save()
             .then((photo) => {
-              // console.log(photo);
               res
                 .status(200)
                 .send(photo);

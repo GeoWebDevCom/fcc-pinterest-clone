@@ -25,7 +25,7 @@ export class PhotoContainer extends React.Component {
             <p>{photo.desc}</p>
           </div>
           <div className='photo-user'>
-            <img src='' />
+            <img src={photo.creator.profile_pic} alt={'@' + photo.creator.displayName} />
             <button><i className='fa fa-star' />{photo.likes.length}</button>
           </div>
         </div>
