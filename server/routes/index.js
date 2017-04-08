@@ -1,6 +1,7 @@
 'use strict';
 /*eslint-disable require-jsdoc*/
 const PhotoModel = require('../models/photos');
+const UserModel = require('../models/users');
 
 const path = process.cwd();
 
@@ -37,6 +38,41 @@ module.exports = function(app, passport) {
             .send({photos});
         })
         .catch(console.error);
+    })
+    .post((req, res) => {
+      UserModel
+        .findOne({_id: req.user._id})
+        .then((user) => {
+          if (!user) {
+            res
+              .status(400)
+              .send(`No such user as ${req.user._id}`);
+          }
+          let photo = new PhotoModel({
+            url: req.body.url,
+            desc: req.body.desc,
+            creator: {
+              _id: user._id,
+              displayName: user.twitter.displayName,
+              profile_pic: user.twitter.pic,
+            }
+          });
+
+          photo
+            .save()
+            .then((photo) => {
+              // console.log(photo);
+              res
+                .status(200)
+                .send(photo);
+            })
+            .catch((error) => {
+              res
+                .status(400)
+                .send(error);
+            });
+
+        })
     });
 
   // app   .route('/login')   .get(sendIndex);

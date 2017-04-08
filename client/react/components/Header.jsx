@@ -1,14 +1,15 @@
 /*----------Modules----------*/
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import $ from 'jquery';
 
 /*----------Components----------*/
 
 /*----------Redux----------*/
 import * as actions from 'actions';
 
-export class Header extends React.Component {
+export class Header extends Component {
   constructor() {
     super();
   }
@@ -26,14 +27,29 @@ export class Header extends React.Component {
       .get('/photos')
       .done((res) => {
         let {photos} = res;
-        // console.log('GET /photos', photos);
         if (photos.length) {
           dispatch(actions.setAllPhotos(photos));
         }
       });
   }
-  addPic(e) {
+  addPic = (e) => {
     e.preventDefault();
+    let request = {
+      url: '/photos',
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      data: JSON.stringify({
+        url: this.refs.picURL.value,
+        desc: this.refs.desc.value,
+      }),
+      dataType: 'json',
+    };
+    $
+      .ajax(request)
+      .done((res) => console.log)
+      .fail(console.error);
   }
   render() {
     const {_id} = this.props.userSession.user;
