@@ -41,6 +41,9 @@ describe('Passport Configuration', () => {
     let profile = {
       id: '234',
       displayName: 'Slartibartfast',
+      _json: {
+        profile_image_url: 'pic',
+      }
     };
     registerTwitterUser(null, null, profile, (err, user)=> {
       User.findOne({'twitter.id': '234'}, (err, user) => {
@@ -59,6 +62,9 @@ describe('Passport Configuration', () => {
     let profile = {
       id: '123',
       displayName: 'Slartibartfast',
+      _json: {
+        profile_image_url: 'pic',
+      }
     };
     registerTwitterUser(null, null, profile, (err, user) =>{
       User.findOne({'twitter.id': '123'}, (err, user) => {

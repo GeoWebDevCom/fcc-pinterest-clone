@@ -1,6 +1,6 @@
 /*----------Modules----------*/
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
+// import {Link} from 'react-router';
 import {connect} from 'react-redux';
 
 /*----------Components----------*/
@@ -15,6 +15,7 @@ export class PhotoContainer extends React.Component {
         list
       }, myPics, userSession: {user}} = this.props;
     return list.filter((photo) => {
+      // console.log(photo.creator._id, user._id);
       return myPics ? photo.creator._id == user._id : true;
     }).map((photo) => {
       return (

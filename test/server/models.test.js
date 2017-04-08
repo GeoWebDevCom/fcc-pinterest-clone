@@ -14,19 +14,21 @@ describe('users model', () => {
     const user = new UserModel({
       twitter: {
         id: '234',
-        displayName: 'Hamlet the Dane'
+        displayName: 'Hamlet the Dane',
+        pic: 'pic',
       },
       photos: [{photoId: new ObjectID()}, {photoId: new ObjectID()}, {photoId: new ObjectID()}]
     });
     user
       .save()
       .then(() => done())
-      .catch((error) => expect(error).toNotExist());
+      .catch((error) => done);
   });
   it('should reject user entries without an id string', (done) => {
     const user = new UserModel({
       twitter: {
-        displayName: 'Hamlet the Dane'
+        displayName: 'Hamlet the Dane',
+        pic: 'pic',
       },
       photos: [{photoId: new ObjectID()}, {photoId: new ObjectID()}, {photoId: new ObjectID()}]
     });
@@ -44,6 +46,25 @@ describe('users model', () => {
     const user = new UserModel({
       twitter: {
         id: '1234',
+        pic: 'pic',
+      },
+      photos: [{photoId: new ObjectID()}, {photoId: new ObjectID()}, {photoId: new ObjectID()}]
+    });
+    user
+      .save()
+      .then((res) => {
+        done(new Error('Expected user to not be accepted'));
+      })
+      .catch((error) => {
+        expect(error).toExist();
+        done();
+      });
+  });
+  it('should reject user entries without a profile img', (done) => {
+    const user = new UserModel({
+      twitter: {
+        id: '1234',
+        displayName: 'Hamlet the Dane',
       },
       photos: [{photoId: new ObjectID()}, {photoId: new ObjectID()}, {photoId: new ObjectID()}]
     });
@@ -79,18 +100,24 @@ describe('users model', () => {
 
 describe('photos model', () => {
   it('should accept valid photo entries to database', (done) => {
-    const creator = new ObjectID();
+    const creator = {
+      _id: new ObjectID(),
+      displayName: 'Rosencrantz & Guildenstern',
+    };
 
     let photo = new PhotoModel({url: 'http://tjscollins.me', desc: 'My Home page', creator});
 
     photo
       .save()
       .then(() => done())
-      .catch((err) => expect(err).toNotExist());
+      .catch((err) => done);
   });
 
   it('should reject photo entries with malformed URLs', (done) => {
-    const creator = new ObjectID();
+    const creator = {
+      _id: new ObjectID(),
+      displayName: 'Rosencrantz & Guildenstern',
+    };
     let photo = new PhotoModel({url: 'http://tjscollinsme', desc: 'My Home page', creator});
     photo
       .save()
@@ -104,7 +131,10 @@ describe('photos model', () => {
   });
 
   it('should reject photo entries without descriptions', (done) => {
-    const creator = new ObjectID();
+    const creator = {
+      _id: new ObjectID(),
+      displayName: 'Rosencrantz & Guildenstern',
+    };
     let photo = new PhotoModel({url: 'http://tjscollins.me', creator});
     photo
       .save()

@@ -23,6 +23,10 @@ module.exports = function(app, passport) {
     .get(sendIndex);
 
   app
+    .route('/profile')
+    .get(sendIndex);
+
+  app
     .route('/photos')
     .get((req, res) => {
       PhotoModel
@@ -40,7 +44,6 @@ module.exports = function(app, passport) {
   // app   .route('/logout')   .get(function(req, res) {     req.logout();
   // res.redirect('/login');   });
   //
-  // app   .route('/profile')   .get(isLoggedIn, sendIndex);
   //
   app
     .route('/api/me')
