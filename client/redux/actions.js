@@ -22,3 +22,10 @@ export const addPhoto = (photo) => {
     photo,
   };
 };
+
+export const deletePhoto = (_id) => {
+  return {
+    type: 'DELETE_PHOTO',
+    _id,
+  };
+};

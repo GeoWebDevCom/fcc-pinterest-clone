@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>picBazaar</title>
-		<link href="/public/css/main.css" rel="stylesheet" type="text/css">
-	</head>
 
-	<body>
-		<div id="react-app"></div>
-		<script type="text/javascript" src="public/bundle.js" charset="utf-8"></script>
-	</body>
+<head>
+	<title>picBazaar</title>
+	<link href="/public/css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="react-app"></div>
+	<script type="text/javascript" src="public/bundle.js" charset="utf-8"></script>
+	<!-- <script>
+		$('img').each(function() {
+			var Image = $(this);
+			$(window).on('load', function() {
+				if (Image.width() <= 1 || Image.height() <= 1) {
+					Image.attr('src', '/ImagePath');
+				}
+			});
+			$(document).ready(function() {
+				Image.error(function() {
+					Image.attr('src', '/ImagePath');
+				});
+			});
+		});
+	</script> -->
+</body>
+
 </html>

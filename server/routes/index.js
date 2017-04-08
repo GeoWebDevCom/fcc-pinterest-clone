@@ -72,6 +72,30 @@ module.exports = function(app, passport) {
             });
 
         })
+    })
+    .delete((req, res) => {
+      const {_id} = req.body;
+      UserModel
+        .findOne({_id: req.user._id})
+        .then((user) => {
+          if (!user) {
+            res
+              .status(400)
+              .send(`No such user as ${req.user._id}`);
+          }
+          PhotoModel.findOne({_id})
+            .then((photo) => {
+              // console.log(photo.creator._id.toString(), req.user._id.toString(), photo.creator._id.toString() !== req.user._id.toString());
+              if(photo.creator._id.toString() !== user._id.toString()) {
+                res.status(401).send();
+              } else {
+                photo.remove();
+                res.status(200).send({});
+              }
+            })
+            .catch((err) => {});
+
+        })
     });
 
   // app   .route('/login')   .get(sendIndex);

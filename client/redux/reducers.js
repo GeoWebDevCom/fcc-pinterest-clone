@@ -25,6 +25,11 @@ export const photosReducer = (state = {}, action) => {
           action.photo,
         ],
       };
+    case 'DELETE_PHOTO':
+      return {
+        ...state,
+        list: state.list.filter((photo) => photo._id !== action._id),
+      };
     default:
       return state;
   }
